@@ -25,6 +25,11 @@
 <!--        <artifactId>cloud-api-commons</artifactId>-->
 <!--        <version>${project.version}</version>-->
 <!--    </dependency>-->
+    <dependency><!-- 引入自己的通用工具包-->
+        <groupId>com.atguigu.spring.cloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+    </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
