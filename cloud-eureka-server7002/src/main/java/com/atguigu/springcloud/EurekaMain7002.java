@@ -2,14 +2,13 @@ package com.atguigu.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
-import javax.swing.*;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class OrderConsulMain80 {
+@EnableEurekaServer
+public class EurekaMain7002 {
+
     public static void main(String[] args) {
-        SpringApplication.run(OrderConsulMain80.class,args);
+        SpringApplication.run(EurekaMain7002.class, args);
     }
 }

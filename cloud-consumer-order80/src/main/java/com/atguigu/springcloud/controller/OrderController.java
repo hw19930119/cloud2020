@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @Slf4j
@@ -21,7 +23,7 @@ public class OrderController {
         return commonResult;
     }
     @GetMapping("/consumer/payment/getPayment/{id}")
-    public CommonResult<Payment> getPayment(@PathVariable Long id){
+    public CommonResult getPayment(@PathVariable Long id){
         CommonResult commonResult=restTemplate.getForObject(payment_url+"/payment/get/"+id,CommonResult.class);
         return commonResult;
     }

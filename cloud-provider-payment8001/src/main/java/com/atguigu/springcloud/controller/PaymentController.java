@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Slf4j
@@ -35,9 +36,9 @@ public class PaymentController {
         }else{
             log.info("已经存在的session，sessionId="+httpSession.getId());
         }
-        log.info("*******插入结果："+payment);
         if(payment!=null){
-            return  new CommonResult(200,"成功！",payment);
+            CommonResult commonResult= new CommonResult(200,"成功！",payment);
+            return  commonResult;
         }else{
             return new CommonResult(400,"没有对应的结果--》"+id,null);
         }
