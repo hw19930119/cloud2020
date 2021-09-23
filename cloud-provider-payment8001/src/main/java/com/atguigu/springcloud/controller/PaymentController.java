@@ -4,6 +4,7 @@ import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +18,16 @@ import javax.servlet.http.HttpSession;
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
+    @Value("${server.port}")
+    private String serverPort;
     @PostMapping(value="/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result= paymentService.create(payment);
         log.info("*******插入结果："+result);
         if(result>0){
-            return  new CommonResult(200,"插入数据库成功！",result);
+            return  new CommonResult(200,"插入数据库成功！端口："+serverPort,result);
         }else{
-            return new CommonResult(400,"插入数据库失败",result);
+            return new CommonResult(400,"插入数据库失败!端口："+serverPort,result);
         }
     }
     @GetMapping(value="/payment/get/{id}")
@@ -37,10 +40,10 @@ public class PaymentController {
             log.info("已经存在的session，sessionId="+httpSession.getId());
         }
         if(payment!=null){
-            CommonResult commonResult= new CommonResult(200,"成功！",payment);
+            CommonResult commonResult= new CommonResult(200,"成功！端口："+serverPort,payment);
             return  commonResult;
         }else{
-            return new CommonResult(400,"没有对应的结果--》"+id,null);
+            return new CommonResult(400,"端口："+serverPort+" 没有对应的结果--》"+id,null);
         }
     }
 
