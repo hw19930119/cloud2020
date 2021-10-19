@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 @RestController
 @Slf4j
 public class OrderController {
-    private static final String payment_url="http://localhost:8001/cloud-payment";
+//    private static final String payment_url="http://localhost:8001/cloud-payment";
+    private static final String payment_url="http://CLOUD-PAYMENT-SERVICE/cloud-payment";
     @Resource
     private  RestTemplate restTemplate;
     @GetMapping("/consumer/payment/create")
